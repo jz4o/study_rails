@@ -21,10 +21,17 @@ class FeatureCarrierWave::UsersController < ApplicationController
   def edit
   end
 
+  def confirm
+    @feature_carrier_wave_user = FeatureCarrierWave::User.new(feature_carrier_wave_user_params)
+    @feature_carrier_wave_user.avatar.cache! if params[:avatar]
+  end
+
   # POST /feature_carrier_wave/users
   # POST /feature_carrier_wave/users.json
   def create
     @feature_carrier_wave_user = FeatureCarrierWave::User.new(feature_carrier_wave_user_params)
+
+    @feature_carrier_wave_user.avatar.retrieve_from_cache! params[:cache][:avatar] if params.dig(:cache,:avatar)&.present?
 
     respond_to do |format|
       if @feature_carrier_wave_user.save
