@@ -1,5 +1,16 @@
 <h1>New Feature Carrier Wave User</h1>
 
-<%= render 'form', feature_carrier_wave_user: @feature_carrier_wave_user %>
+<div style="float: left;">
+  <h2>Not via confirm</h2>
+  <%= render 'form', feature_carrier_wave_user: @feature_carrier_wave_user %>
+</div>
 
-<%= link_to 'Back', feature_carrier_wave_users_path %>
+<div style="float: left;">
+  <h2>Via confirm</h2>
+  <%= render 'form', feature_carrier_wave_user: @feature_carrier_wave_user, post_to: 'confirm' %>
+</div>
+
+<div style="clear: both;">
+  <%= link_to 'Back', feature_carrier_wave_users_path %>
+</div>
+

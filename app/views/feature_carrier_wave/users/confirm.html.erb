@@ -1,0 +1,22 @@
+<h1>Confirm Feature Carrier Wave User</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%= @feature_carrier_wave_user.name %></td>
+  </tr>
+
+  <tr>
+    <th>Avatar</th>
+    <td><%= @feature_carrier_wave_user.avatar %></td>
+  </tr>
+</table>
+
+<%= form_with(model: @feature_carrier_wave_user, local: true) do |form| %>
+    <%= form.hidden_field :name %>
+    <%= hidden_field_tag :"cache[avatar]", form.object.avatar.cache_name %>
+
+    <%= form.submit %>
+<% end %>
+
+<%= link_to 'Back', :back %>
