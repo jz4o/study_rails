@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feature Carrier Wave Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Avatar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feature_carrier_wave_users.each do |feature_carrier_wave_user| %>
+      <tr>
+        <td><%= feature_carrier_wave_user.name %></td>
+        <td><%= feature_carrier_wave_user.avatar %></td>
+        <td><%= link_to 'Show', feature_carrier_wave_user %></td>
+        <td><%= link_to 'Edit', edit_feature_carrier_wave_user_path(feature_carrier_wave_user) %></td>
+        <td><%= link_to 'Destroy', feature_carrier_wave_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature Carrier Wave User', new_feature_carrier_wave_user_path %>

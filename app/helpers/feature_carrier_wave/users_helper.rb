@@ -1,0 +1,2 @@
+module FeatureCarrierWave::UsersHelper
+end
