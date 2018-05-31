@@ -1,0 +1,2 @@
+module FeatureActiveRecord::ParentsHelper
+end

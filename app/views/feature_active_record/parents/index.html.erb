@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feature Active Record Parents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @feature_active_record_parents.each do |feature_active_record_parent| %>
+      <tr>
+        <td><%= feature_active_record_parent.name %></td>
+        <td><%= link_to 'Show', feature_active_record_parent %></td>
+        <td><%= link_to 'Edit', edit_feature_active_record_parent_path(feature_active_record_parent) %></td>
+        <td><%= link_to 'Destroy', feature_active_record_parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature Active Record Parent', new_feature_active_record_parent_path %>
