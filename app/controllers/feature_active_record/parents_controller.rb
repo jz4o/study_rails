@@ -69,6 +69,6 @@ class FeatureActiveRecord::ParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_active_record_parent_params
-      params.require(:feature_active_record_parent).permit(:name)
+      params.require(:feature_active_record_parent).permit(:name, has_one_child_attributes: %i[id name])
     end
 end

@@ -5,5 +5,10 @@
   <%= @feature_active_record_parent.name %>
 </p>
 
+<p>
+  <strong>HasOneChildName:</strong>
+  <%= @feature_active_record_parent.has_one_child&.name %>
+</p>
+
 <%= link_to 'Edit', edit_feature_active_record_parent_path(@feature_active_record_parent) %> |
 <%= link_to 'Back', feature_active_record_parents_path %>

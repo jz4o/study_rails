@@ -14,6 +14,12 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+
+    <%= form.fields_for :has_one_child,
+          form.object.has_one_child || FeatureActiveRecord::HasOneChild.new do |has_one_child_field| %>
+      <%= has_one_child_field.label :name, 'Has one child name' %>
+      <%= has_one_child_field.text_field :name %>
+    <% end %>
   </div>
 
   <div class="actions">
