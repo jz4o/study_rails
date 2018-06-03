@@ -15,17 +15,75 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
 
-    <%= form.fields_for :has_one_child,
-          form.object.has_one_child || FeatureActiveRecord::HasOneChild.new do |has_one_child_field| %>
-      <%= has_one_child_field.label :name, 'Has one child name' %>
-      <%= has_one_child_field.text_field :name %>
+    <%= label_tag :has_one_child_is_need, 'has one child is need' %>
+    <%= check_box_tag :has_one_child_is_need, nil, form.object.has_one_child, onchange: 'setHasOneChildNeed(this.checked)' %>
 
-      <%= has_one_child_field.label :_destroy, 'has one child is no need' %>
-      <%= has_one_child_field.check_box :_destroy %>
-    <% end %>
+    <div id="has_one_child_field">
+      <%= form.fields_for :has_one_child,
+            form.object.has_one_child || FeatureActiveRecord::HasOneChild.new do |has_one_child_field| %>
+        <%= has_one_child_field.label :name, 'Has one child name' %>
+        <%= has_one_child_field.text_field :name %>
+
+        <%= has_one_child_field.hidden_field :_destroy %>
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  /**
+   * 対象の表示を切り替える
+   *
+   * @param String  targetId  表示切替対象のID
+   * @param Boolean isVisible 表示有無 表示する場合は `true`
+   */
+  function setVisible(targetId, isVisible) {
+    document.getElementById(targetId).style.display = isVisible ? '' : 'none';
+  }
+
+  /**
+   * 対象の削除要否を切り替える
+   *
+   * @param String  targetId  削除要否を持つフィールドのID
+   * @param Boolean isDestroy 削除要否 削除する場合は `true`
+   */
+  function setDestroy(targetId, isDestroy) {
+    document.getElementById(targetId).value = isDestroy ? '1' : '0';
+  }
+
+  /**
+   * 対象の表示及び削除要否を切り替える
+   *
+   * @paran String  childFieldId        対象の入力欄のID
+   * @param String  childDestroyFieldId 対象の削除要否を持つフィールドのID
+   * @param Boolean isNeed              対象が必要な場合は `true`
+   */
+  function setChildNeed(childFieldId, childDestroyFieldId, isNeed) {
+    setVisible(childFieldId, isNeed);
+    setDestroy(childDestroyFieldId, !isNeed);
+  }
+
+  /**
+   * has_one_childの表示及び削除要否を切り替える
+   *
+   * @param Boolean isNeed has_one_childが必要な場合は `true`
+   */
+  function setHasOneChildNeed(isNeed) {
+    setChildNeed(
+      'has_one_child_field',
+      'feature_active_record_parent_has_one_child_attributes__destroy',
+      isNeed
+    );
+  }
+
+  /**
+   * 画面初期化時の処理
+   */
+  (function (){
+    setHasOneChildNeed(<%= !!feature_active_record_parent.has_one_child %>);
+  })();
+</script>
