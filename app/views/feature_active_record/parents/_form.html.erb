@@ -19,6 +19,9 @@
           form.object.has_one_child || FeatureActiveRecord::HasOneChild.new do |has_one_child_field| %>
       <%= has_one_child_field.label :name, 'Has one child name' %>
       <%= has_one_child_field.text_field :name %>
+
+      <%= has_one_child_field.label :_destroy, 'has one child is no need' %>
+      <%= has_one_child_field.check_box :_destroy %>
     <% end %>
   </div>
 
