@@ -15,6 +15,7 @@ class FeatureActiveRecord::ParentsController < ApplicationController
   # GET /feature_active_record/parents/new
   def new
     @feature_active_record_parent = FeatureActiveRecord::Parent.new
+    5.times { @feature_active_record_parent.has_many_children.build }
   end
 
   # GET /feature_active_record/parents/1/edit
@@ -69,6 +70,10 @@ class FeatureActiveRecord::ParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_active_record_parent_params
-      params.require(:feature_active_record_parent).permit(:name, has_one_child_attributes: %i[id name _destroy])
+      params.require(:feature_active_record_parent).permit(
+        :name,
+        has_one_child_attributes: %i[id name _destroy],
+        has_many_children_attributes: %i[id name]
+      )
     end
 end

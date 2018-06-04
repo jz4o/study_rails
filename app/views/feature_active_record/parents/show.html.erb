@@ -10,5 +10,12 @@
   <%= @feature_active_record_parent.has_one_child&.name %>
 </p>
 
+<p>
+  <strong>HasManyChildName</strong>
+  <% @feature_active_record_parent.has_many_children.each do |has_many_child| %>
+    <%= has_many_child.name %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_feature_active_record_parent_path(@feature_active_record_parent) %> |
 <%= link_to 'Back', feature_active_record_parents_path %>
