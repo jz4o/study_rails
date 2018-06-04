@@ -4,7 +4,7 @@ class FeatureActiveRecord::ParentsController < ApplicationController
   # GET /feature_active_record/parents
   # GET /feature_active_record/parents.json
   def index
-    @feature_active_record_parents = FeatureActiveRecord::Parent.all
+    @feature_active_record_parents = FeatureActiveRecord::Parent.all.includes(:has_one_child)
   end
 
   # GET /feature_active_record/parents/1
