@@ -29,9 +29,12 @@
     </div>
 
     <%= form.fields_for :has_many_children do |has_many_child_field| %>
-      <%= has_many_child_field.label :name, 'Has many child name' %>
-      <%= has_many_child_field.text_field :name %>
+      <%= render 'has_many_child_fields', has_many_child_field: has_many_child_field %>
     <% end %>
+
+    <div id="links">
+      <%= link_to_add_association 'add has many child', form, :has_many_children, form_name: :has_many_child_field %>
+    </div>
   </div>
 
   <div class="actions">
