@@ -64,3 +64,9 @@ gem 'tzinfo-data', '1.2018.5', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # File Upload
 gem 'carrierwave', '1.2.2'
 
+# Nest Form
+gem 'cocoon', '1.2.11'
+
+# jQuery
+gem 'jquery-rails', '4.3.3'
+

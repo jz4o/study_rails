@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :feature_active_record do
+    resources :parents
+  end
   namespace :feature_carrier_wave do
     resources :users do
       post :confirm, on: :collection
