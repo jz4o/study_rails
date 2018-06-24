@@ -23,7 +23,7 @@ class FeatureCarrierWave::UsersController < ApplicationController
 
   def confirm
     @feature_carrier_wave_user = FeatureCarrierWave::User.new(feature_carrier_wave_user_params)
-    @feature_carrier_wave_user.avatar.cache! if params[:avatar]
+    @feature_carrier_wave_user.avatar.cache! if feature_carrier_wave_user_params[:avatar]
   end
 
   # POST /feature_carrier_wave/users
