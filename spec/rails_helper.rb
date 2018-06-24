@@ -55,6 +55,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.include ActionDispatch::TestProcess
+  config.fixture_path = Rails.root.join 'spec', 'factories'
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
@@ -66,6 +69,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    FileUtils.rm_rf Rails.root.join('public', "#{Rails.env}_uploads")
   end
 end
 
