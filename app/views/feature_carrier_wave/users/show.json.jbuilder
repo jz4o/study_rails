@@ -1,1 +1,0 @@
-json.partial! "feature_carrier_wave_users/feature_carrier_wave_user", feature_carrier_wave_user: @feature_carrier_wave_user
