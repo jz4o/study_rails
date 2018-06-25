@@ -1,1 +1,0 @@
-json.partial! "feature_active_record_parents/feature_active_record_parent", feature_active_record_parent: @feature_active_record_parent
