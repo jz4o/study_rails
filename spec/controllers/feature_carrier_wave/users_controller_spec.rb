@@ -8,9 +8,16 @@ RSpec.describe FeatureCarrierWave::UsersController, type: :controller do
   let(:user_attributes) { FactoryBot.attributes_for :feature_carrier_wave_user }
 
   let(:upload_folder) { Rails.root.join('public', "#{Rails.env}_uploads", 'feature_carrier_wave') }
-  let(:uploaded_file_paths) { Dir.glob(upload_folder.join('**', '*')).select { |file|  File.file? file} }
+  let(:uploaded_file_paths) { Dir.glob(upload_folder.join('**', '*')).select { |file| File.file? file } }
 
-  let(:avatar_parameter) { { avatar: fixture_file_upload(['feature_carrier_wave', avatar_parameter_file_name].join('/'), 'image/png') } }
+  let(:avatar_parameter) do
+    {
+      avatar: fixture_file_upload(
+        ['feature_carrier_wave', avatar_parameter_file_name].join('/'),
+        'image/png'
+      )
+    }
+  end
   let(:avatar_parameter_file_name) { 'avatar_red.png' }
 
   describe 'GET #index' do
@@ -46,7 +53,7 @@ RSpec.describe FeatureCarrierWave::UsersController, type: :controller do
 
       describe 'assigns' do
         subject { assigns[:feature_carrier_wave_user] }
-        before {get_request }
+        before { get_request }
         it { is_expected.to eq user }
       end
     end
@@ -287,7 +294,7 @@ RSpec.describe FeatureCarrierWave::UsersController, type: :controller do
 
     context 'when specific not exist record' do
       subject { proc { patch_request } }
-      let(:target) {  -1 }
+      let(:target) { -1 }
       it { is_expected.to raise_error ActiveRecord::RecordNotFound }
     end
   end

@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe FeatureActiveRecord::ParentsController, type: :controller do
   let(:parent) { FactoryBot.create :feature_active_record_parent }
 
-  let(:parent_with_children) { FactoryBot.create :feature_active_record_parent_with_children, has_many_children_size: has_many_children_size }
+  let(:parent_with_children) do
+    FactoryBot.create :feature_active_record_parent_with_children,
+                      has_many_children_size: has_many_children_size
+  end
   let(:has_many_children_size) { 10 }
 
   let(:parents) { FactoryBot.create_list :feature_active_record_parent, parents_size }
@@ -106,7 +109,7 @@ RSpec.describe FeatureActiveRecord::ParentsController, type: :controller do
           parent_attributes.merge(
             has_one_child_attributes: has_one_child_attributes
           ).merge(
-            has_many_children_attributes: [ has_many_child_attributes ]
+            has_many_children_attributes: [has_many_child_attributes]
           )
       }
     end
