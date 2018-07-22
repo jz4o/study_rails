@@ -1,0 +1,12 @@
+<h1>Menu</h1>
+
+<table>
+  <tbody>
+    <% @menu_items.each_with_index do |item, index| %>
+      <tr>
+        <td><%= link_to item.title, show_menu_path(index) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

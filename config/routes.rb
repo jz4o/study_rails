@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'menu#index'
+
+  get 'menu', to: 'menu#index'
+  get 'menu/:index', to: 'menu#show', param: :index, as: :show_menu
+
   namespace :feature_active_record do
     resources :parents
   end
