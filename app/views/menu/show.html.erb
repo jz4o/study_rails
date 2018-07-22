@@ -1,0 +1,37 @@
+<h1><%= @menu_item.title %></h1>
+
+<table class="full_width_table">
+  <tr>
+    <th>Title: </th>
+    <td><%= @menu_item.title %></td>
+  </tr>
+
+  <tr>
+    <th>Description: </th>
+    <td><%= @menu_item.description %></td>
+  </tr>
+
+  <tr>
+    <th>Demo:</th>
+    <td><%= link_to 'デモページ', @menu_item.demo_path %></td>
+  </tr>
+
+  <tr>
+    <th>Code: </th>
+    <td><%= select :menu, :code, @menu_item.codes.map.with_index { |item, index| [item, index] }, include_blank: true %></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <td><%= text_area_tag 'menu[detail]' %></td>
+  </tr>
+</table>
+
+<script>
+  var codes = [''];
+  <% @menu_item.codes.each do |code| %>
+    <% code = File.read(Rails.root.join(code)).gsub("\n", '<br />')%>
+    codes.push('<%= code %>');
+  <% end %>
+</script>
+
