@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MenuController, type: :controller do
+  before { allow(controller).to receive(:logged_in?).and_return(true) }
+
   describe 'GET #index' do
     describe 'response' do
       subject { get :index }

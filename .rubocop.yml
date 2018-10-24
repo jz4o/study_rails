@@ -19,6 +19,9 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 120
 
+Style/AndOr:
+  Enabled: false
+
 Style/AsciiComments:
   Enabled: false
 
@@ -26,6 +29,9 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:

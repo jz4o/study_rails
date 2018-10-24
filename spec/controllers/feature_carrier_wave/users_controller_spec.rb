@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FeatureCarrierWave::UsersController, type: :controller do
+  before { allow(controller).to receive(:logged_in?).and_return(true) }
+
   let(:user) { FactoryBot.create :feature_carrier_wave_user }
   let(:users) { FactoryBot.create_list :feature_carrier_wave_user, users_size }
   let(:users_size) { 5 }

@@ -79,3 +79,6 @@ gem 'cocoon', '1.2.11'
 
 # jQuery
 gem 'jquery-rails', '4.3.3'
+
+# Login
+gem 'authlogic', '4.2.0'
