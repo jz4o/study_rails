@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'menu#index'
 
+  resource :user_session, only: :create
+  get    'login',  to: 'user_sessions#new'
+  delete 'logout', to: 'user_sessions#destroy'
+
   get 'menu', to: 'menu#index'
   get 'menu/:index', to: 'menu#show', param: :index, as: :show_menu
 

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FeatureActiveRecord::ParentsController, type: :controller do
+  before { allow(controller).to receive(:logged_in?).and_return(true) }
+
   let(:parent) { FactoryBot.create :feature_active_record_parent }
 
   let(:parent_with_children) do

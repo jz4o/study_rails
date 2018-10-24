@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_123608) do
+ActiveRecord::Schema.define(version: 2018_07_29_060316) do
 
   create_table "feature_active_record_has_many_children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "parent_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2018_06_03_123608) do
   create_table "feature_carrier_wave_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "crypted_password", null: false
+    t.string "password_salt", null: false
+    t.string "persistence_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
