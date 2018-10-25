@@ -6,9 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'csv'
+
 User.delete_all
-User.create(
-  email:                 'user@example.com',
-  password:              'password',
-  password_confirmation: 'password'
-)
+
+Dir.glob(Rails.root.join('db', 'seeds', '*.csv')).each do |csv_path|
+  klass = File.basename(csv_path, '.csv').classify.constantize
+  CSV.foreach(csv_path, headers: true) do |row|
+    klass.create row.to_hash
+  end
+end
