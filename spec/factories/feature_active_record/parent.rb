@@ -4,7 +4,7 @@ FactoryBot.define do
 
     factory :feature_active_record_parent_with_children do
       transient do
-        has_many_children_size 5
+        has_many_children_size { 5 }
       end
 
       after(:create) do |parent, transient|
