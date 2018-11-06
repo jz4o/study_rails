@@ -240,7 +240,7 @@ RSpec.describe FeatureCarrierWave::UsersController, type: :controller do
     let(:patch_request) { patch :update, params: parameters }
     let(:parameters) do
       {
-        id: target,
+        id:                        target,
         feature_carrier_wave_user: user_update_attributes.merge(avatar_parameter)
       }
     end

@@ -17,6 +17,7 @@ module Menu
 
   @items << MenuItem.new(
     title:       'メニュー画面',
+    description: '',
     demo_path:   '/menu',
     codes:       item_file_paths('menu')
   )
@@ -30,6 +31,7 @@ module Menu
 
   @items << MenuItem.new(
     title:       'CarrierWaveを用いたファイルアップロード',
+    description: '',
     demo_path:   '/feature_carrier_wave/users',
     codes:       item_file_paths('feature_carrier_wave')
   )
