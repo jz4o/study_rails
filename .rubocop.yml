@@ -9,6 +9,9 @@ AllCops:
 
   TargetRubyVersion: 2.5.1
 
+Layout/AlignHash:
+  EnforcedColonStyle: table
+
 Layout/EndOfLine:
   EnforcedStyle: lf
 

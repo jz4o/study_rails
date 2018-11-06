@@ -47,7 +47,7 @@ class FeatureActiveRecord::ParentsController < ApplicationController
   def feature_active_record_parent_params
     params.require(:feature_active_record_parent).permit(
       :name,
-      has_one_child_attributes: %i[id name _destroy],
+      has_one_child_attributes:     %i[id name _destroy],
       has_many_children_attributes: %i[id name _destroy]
     )
   end

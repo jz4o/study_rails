@@ -106,14 +106,13 @@ RSpec.describe FeatureActiveRecord::ParentsController, type: :controller do
   describe 'POST #create' do
     let(:post_request) { post :create, params: parameters }
     let(:parameters) do
-      {
-        feature_active_record_parent:
-          parent_attributes.merge(
-            has_one_child_attributes: has_one_child_attributes
-          ).merge(
-            has_many_children_attributes: [has_many_child_attributes]
-          )
-      }
+      feature_active_record_parent = parent_attributes.merge(
+        has_one_child_attributes: has_one_child_attributes
+      ).merge(
+        has_many_children_attributes: [has_many_child_attributes]
+      )
+
+      { feature_active_record_parent: feature_active_record_parent }
     end
 
     context 'when success with save' do
@@ -154,19 +153,23 @@ RSpec.describe FeatureActiveRecord::ParentsController, type: :controller do
   describe 'PATCH/PUT #update' do
     let(:patch_request) { patch :update, params: parameters }
     let(:parameters) do
+      has_one_child_attributes = has_one_child_update_attributes.merge(
+        id:       has_one_target,
+        _destroy: destroy
+      )
+
+      has_many_children_attributes = [
+        has_many_child_update_attributes.merge(
+          id:       has_many_target,
+          _destroy: destroy
+        )
+      ]
+
       {
-        id: target,
+        id:                           target,
         feature_active_record_parent: parent_update_attributes.merge(
-          has_one_child_attributes: has_one_child_update_attributes.merge(
-            id: has_one_target,
-            _destroy: destroy
-          ),
-          has_many_children_attributes: [
-            has_many_child_update_attributes.merge(
-              id: has_many_target,
-              _destroy: destroy
-            )
-          ]
+          has_one_child_attributes:     has_one_child_attributes,
+          has_many_children_attributes: has_many_children_attributes
         )
       }
     end
