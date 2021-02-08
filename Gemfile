@@ -72,7 +72,7 @@ end
 gem 'tzinfo-data', '1.2018.5', platforms: %i[mingw mswin x64_mingw jruby]
 
 # File Upload
-gem 'carrierwave', '1.2.3'
+gem 'carrierwave', '1.3.2'
 
 # Nest Form
 gem 'cocoon', '1.2.12'
